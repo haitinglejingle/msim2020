@@ -19,7 +19,7 @@ _Note: It would be great if someone (or later, I) could add an install script to
 
 Enter this into your command line prompt (but please let me know right away if it doesn't work for you):
 
-`python3 -m pip install -i https://test.pypi.org/simple/ msim2020-homorhythm`
+`pip install msimmusic`
 
 ## Examples
 

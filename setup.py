@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="msimmusic", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Haiting Chan",
     author_email="haitingchan@gmail.com",
     description="Make Your MIDI Instrument. From the Tufts MSIM RPi Music Project",
