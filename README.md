@@ -42,7 +42,7 @@ def playSawSynth(pitch, duration):
 def main():
     tempo = 120
     track = 0   # also try 1 and 2
-    mm.startSong(playSawSynth, midiFile, tempo, 0)
+    mm.midiPlayer(playSawSynth, midiFile, tempo, 0)
 
 if __name__ == "__main__":
     main()
@@ -51,10 +51,10 @@ if __name__ == "__main__":
 
 ### Importing
 
-```import msimmusic as mm```
+`import msimmusic as mm`
 
 ### How to use
-`startSong()` is the primary interface to start playing the song. 
+`midiPlayer()` is the object to provide the interface to start playing a track.
 
 ```
 mm.startSong(playInstrument, midiFile, tempo, track=None)
@@ -68,8 +68,8 @@ The three required parameters (and the optional fourth):
 4. An integer for the track number in the MIDI file (aka, which instrument) 
 	* Even if there are several, startSong will default to the first track if none are given
 
-	
-The function provided for #1 above must have exactly two parameters representing 1) the note pitch (aka frequency) and 2) the duration _in that order_. Example definition:
+
+The function provided for #1 above must have at least these two parameters representing 1) the note pitch (aka frequency) and 2) the duration _in that order_. Example definition:
 
 ```
 def playSynth(p, dur):
@@ -78,13 +78,13 @@ def playSynth(p, dur):
 		ps.sleep(dur)
 	# more code below
 ```
-You might wonder, why are we checking if the pitch is `69` in the example above? Well, `69` is actually the MIDI number for the note A at 440.00 Hz. 
-**Please pay attention to the units of pitch and duration for your needs.** 
 
-The duration of the note is simply in seconds.
+**A note on units:**
+You might wonder, why are we checking if the pitch is `69` in the example above? Well, `69` is actually the MIDI number for the note A at 440.00 Hz. The duration of the note is simply in seconds.
+**Please pay attention to the units of pitch and duration for your needs.**
 
 
-#### Converting pitch from MIDI number in Hz
+##### Converting pitch from MIDI number in Hz
 If you need frequency in Hz instead of the MIDI number, use this function:
 
 ```
@@ -92,4 +92,22 @@ f = mm.midiNumToFreq(p)
 ```
 
 #### Getting the name of the MIDI number
-If you want the note names, for now please refer to a resource such as [this table](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies).
+If you want to use the letter note names, python-sonic library has them as a variable named as the letter and octave. For example, `ps.B3` or `ps.C5`.
+
+For fun, You can also refer to [this table](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies).
+
+
+### Need more control? Get the midiPlayer instance
+You can also get the midiPlayer instance back by including it as an additional parameter. Then, you can access internal instance variables yourself. For example:
+
+```
+def playSynth(p, dur, player):
+    ps.use_synth(ps.SAW)
+    # player.songEnd is a boolean that tells you whether a song has ended
+
+    # Only play if the note is A4
+    if (p == ps.A4):
+        ps.play(p)
+        # play the duration of half a beat instead of the duration specified in the MIDI
+        ps.sleep(player.secs_per_beat / 2)
+```
