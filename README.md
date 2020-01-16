@@ -1,5 +1,5 @@
-# MSIM Music
-A Python package for making your own instrument that will play to a MIDI track.
+# MSIM2020 – Music
+A Python package for making your own instrument that will play to a MIDI track. For the Tufts MSIM Raspberry Pi Music project in year 2020.
 
 ## Prerequisites
 
@@ -17,9 +17,9 @@ Sonic Pi needs to be open on the same computer for python-sonic to make sounds. 
 
 ## Installation
 
-Use this command:
+Use this command (but please let me know right away if it doesn't work for you):
 
-`python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps msimmusic-homorhythm`
+`python3 -m pip install -i https://test.pypi.org/simple/ msim2020-homorhythm`
 
 ## Examples
 
