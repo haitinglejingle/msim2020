@@ -1,18 +1,22 @@
-import setuptools
+import pathlib
+from setuptools import setup
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
 
-setuptools.setup(
+# The text of the README file
+README = (HERE / "README.md").read_text()
+
+setup(
     name="msimmusic-homorhythm", # Replace with your own username
     version="0.0.1",
     author="Haiting Chan",
     author_email="haitingchan@gmail.com",
     description="Make Your MIDI Instrument. From the Tufts MSIM RPi Music Project",
-    long_description=long_description,
+    long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/homorhythm/msimmusic",
-    packages=setuptools.find_packages(),
+    packages=['msimmusic',],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -6,6 +6,12 @@ A Python package for making your own instrument that will play to a MIDI track.
 You will need to install python-sonic, a simple Python interface for Sonic Pi.
 `pip install python-sonic`
 
+Download [python3-midi](https://github.com/louisabraham/python3-midi) by following their instructions. As in, download the repository in the link, then from a terminal you will navigate to the folder you downloaded, then run the following while in the folder:
+
+```
+python setup.py install
+```
+
 ### Note
 Sonic Pi needs to be open on the same computer for python-sonic to make sounds. So, if you plan on playing sounds from python-sonic, open Sonic Pi in the background!
 
