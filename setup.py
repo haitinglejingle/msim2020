@@ -8,8 +8,8 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 setup(
-    name="msim2020-homorhythm", # Replace with your own username
-    version="0.4.0.1",
+    name="msimmusic", # Replace with your own username
+    version="0.0.1",
     author="Haiting Chan",
     author_email="haitingchan@gmail.com",
     description="Make Your MIDI Instrument. From the Tufts MSIM RPi Music Project",
@@ -22,5 +22,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.0',
 )
