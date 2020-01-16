@@ -103,7 +103,6 @@ You can also get the midiPlayer instance back by including it as an additional p
 ```
 def playSynth(p, dur, player):
     ps.use_synth(ps.SAW)
-    # player.songEnd is a boolean that tells you whether a song has ended
 
     # Only play if the note is A4
     if (p == ps.A4):
