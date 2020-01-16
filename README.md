@@ -57,16 +57,16 @@ if __name__ == "__main__":
 `midiPlayer()` is the object to provide the interface to start playing a track.
 
 ```
-mm.startSong(playInstrument, midiFile, tempo, track=None)
+mm.midiPlayer(playInstrument, midiFile, tempo, track=None)
 ```
 
 The three required parameters (and the optional fourth):
 
-1. A function that startSong will call
+1. A function that midiPlayer will call
 2. A string for the MIDI file name
 3. An integer for the tempo of the song
 4. An integer for the track number in the MIDI file (aka, which instrument) 
-	* Even if there are several, startSong will default to the first track if none are given
+	* Even if there are several tracks in the MIDI file, midiPlayer will default to the first track if none are given
 
 
 The function provided for #1 above must have at least these two parameters representing 1) the note pitch (aka frequency) and 2) the duration _in that order_. Example definition:
