@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="msim2020-homorhythm", # Replace with your own username
-    version="0.3.0.0",
+    version="0.3.0.1",
     author="Haiting Chan",
     author_email="haitingchan@gmail.com",
     description="Make Your MIDI Instrument. From the Tufts MSIM RPi Music Project",

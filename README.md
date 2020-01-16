@@ -3,25 +3,51 @@ A Python package for making your own instrument that will play to a MIDI track. 
 
 ## Prerequisites
 
-You will need to install python-sonic, a simple Python interface for Sonic Pi.
-`pip install python-sonic`
 
-Download [python3-midi](https://github.com/louisabraham/python3-midi) by following their instructions. As in, download the repository in the link, then from a terminal you will navigate to the folder you downloaded, then run the following while in the folder:
+1. You will need to install python-sonic, a simple Python interface for Sonic Pi.
+`python3 -m pip install python-sonic`
 
-```
-python setup.py install
-```
+2. Download [python3-midi](https://github.com/louisabraham/python3-midi) by following their instructions. They're a bit tricky, so feel free to ask me for help.
 
-### Note
-Sonic Pi needs to be open on the same computer for python-sonic to make sounds. So, if you plan on playing sounds from python-sonic, open Sonic Pi in the background!
+3. [Sonic Pi](https://sonic-pi.net/) needs to be open on the same computer for python-sonic to make sounds. So, if you plan on playing sounds from python-sonic, open Sonic Pi in the background!
+
+**Okay, now check that you did all three steps above so it doesn't haunt you later.**
+
+_Note: It would be great if someone (or later, I) could add an install script to make this process easier. In the meantime, please ask if you need help!_
 
 ## Installation
 
-Use this command (but please let me know right away if it doesn't work for you):
+Enter this into your command line prompt (but please let me know right away if it doesn't work for you):
 
 `python3 -m pip install -i https://test.pypi.org/simple/ msim2020-homorhythm`
 
 ## Examples
+
+### A fully working example
+
+If you copy-paste this into file to run, make sure you have a MIDI file in the same directory as that file called "funkymusic.mid". You can download the one here from this GitHub repo above.
+
+
+```
+import msimmusic as mm
+import psonic as ps
+
+midiFile = "funkymusic.mid"
+
+def playSawSynth(pitch, duration):
+    ps.use_synth(ps.SAW)
+    ps.play(pitch, release=0.2)
+    ps.sleep(duration)
+
+def main():
+    tempo = 120
+    track = 0   # also try 1 and 2
+    mm.startSong(playSawSynth, midiFile, tempo, 0)
+
+if __name__ == "__main__":
+    main()
+
+```
 
 ### Importing
 
@@ -67,28 +93,3 @@ f = mm.midiNumToFreq(p)
 
 #### Getting the name of the MIDI number
 If you want the note names, for now please refer to a resource such as [this table](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies).
-
-### A fully working example
-
-Make sure you have a MIDI file in the directory you run this example below called "funkymusic.mid" for this to work.
-
-
-```
-import msimmusic as mm
-import psonic as ps
-
-midiFile = "funkymusic.mid"
-
-def playSawSynth(pitch, duration):
-    ps.use_synth(ps.SAW)
-    ps.play(pitch, release=0.2)
-    ps.sleep(duration)
-
-def main():
-    tempo = 120
-    mm.startSong(playSawSynth, midiFile, tempo, 0)
-
-if __name__ == "__main__":
-    main()
-
-```
